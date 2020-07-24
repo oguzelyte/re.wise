@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"> </ion-back-button>
+    </ion-buttons>
+    <ion-title>Register User</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-img src='../assets/rewise-logo.png'></ion-img>
+  <form #myForm="ngForm"> 
+    <ion-item lines="full">
+      <ion-label position="floating">Name</ion-label>
+      <ion-input type="text" #name ngModel name="name" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Username</ion-label>
+      <ion-input type="text" #username ngModel name="username" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label> University </ion-label>
+      <ion-select required ngModel name="university" value={universitySelected} #university okText="Okay" cancelText="Dismiss">
+        <ion-select-option value={{university.id}} *ngFor="let university of universities"> {{ university.title }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="text" #email ngModel name="email" required></ion-input>
+    </ion-item>
+
+
+    <ion-item lines="full">
+      <ion-label position="floating">Student No.</ion-label>
+      <ion-input type="text" #studentNo ngModel name="studentNo" required></ion-input>
+    </ion-item> 
+
+    <ion-item lines="full">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" #password ngModel name="password" required></ion-input>
+    </ion-item>
+
+    <ion-row>
+      <ion-col> 
+      <ion-button type="submit" [disabled]="myForm.invalid" (click)="signUp(email, password, name, username, studentNo, university)" expand="block">Register</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

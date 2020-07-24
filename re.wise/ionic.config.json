@@ -1,0 +1,8 @@
+{
+  "name": "re.wise",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

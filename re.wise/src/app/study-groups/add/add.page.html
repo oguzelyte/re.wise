@@ -1,0 +1,90 @@
+
+
+
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button
+      icon="close"
+      defaultHref="/tabs/tab1">
+    </ion-back-button>
+    </ion-buttons>
+    <ion-title>  Add Study Group </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #myForm="ngForm"> 
+    <ion-item lines="full">
+      <ion-label position="floating">Title</ion-label>
+      <ion-input type="text" #title ngModel name="title" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea #description ngModel name="description" required placeholder="Enter a description"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label> Module Code </ion-label>
+      <ion-select required ngModel name="moduleCode" #moduleCode value={moduleSelected} okText="Okay" cancelText="Dismiss">
+        <ion-select-option value="{{module}}" *ngFor="let module of modules"> {{module}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label> Date </ion-label>
+  <ion-datetime  min="{{myDate}}" max="2020-12-09"
+  displayFormat="YYYY-MM-DD" name="myDate" #mydate>
+  </ion-datetime>      
+      </ion-item>
+
+
+    <ion-item>
+      <ion-label>Time</ion-label>
+      <ion-datetime #time required ngModel="myDate" value="myDate" name="time" displayFormat="HH:mm"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Duration (H)</ion-label>
+      <ion-select #duration required value="1" okText="Okay" cancelText="Dismiss">
+        <ion-select-option value="1H">1</ion-select-option>
+        <ion-select-option value="2H">2</ion-select-option>
+        <ion-select-option value="3H">3</ion-select-option>
+        <ion-select-option value="4H">4</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Max People</ion-label>
+      <ion-select #maxPeople required value="1" okText="Okay" cancelText="Dismiss">
+        <ion-select-option value="2">2</ion-select-option>
+        <ion-select-option value="3">3</ion-select-option>
+        <ion-select-option value="4">4</ion-select-option>
+        <ion-select-option value="5">5</ion-select-option>
+      </ion-select>
+    </ion-item>
+    
+
+    <ion-item lines="full">
+      <ion-label position="floating">Location</ion-label>
+      <ion-input type="text" #location ngModel name="location" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Location Notes</ion-label>
+      <ion-textarea #locationNotes ngModel name="locationNotes" required placeholder="Enter location notes"></ion-textarea>
+    </ion-item>
+    
+
+    <ion-row>
+      <ion-col> 
+      <ion-button color="secondary" type="submit" [disabled]="myForm.invalid" (click)=" firebaseOp.createStudyGroup(title.value, description.value, moduleCode.value, myDate.valueOf(), time.value, duration.value, maxPeople.value, location.value, locationNotes.value)" expand="block">Create Group STUDY</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+
+</ion-content>
+
+

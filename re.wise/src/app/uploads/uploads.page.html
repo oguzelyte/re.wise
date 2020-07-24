@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>uploads</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col>
+      <div *ngIf="uploads.length==0">
+        <h3>You haven't got any uploads, try uploading some.</h3>
+      </div>
+    </ion-col>
+  </ion-row>
+  <div *ngFor="let file of uploads">
+    <ion-card>
+      <ion-item>
+        <ion-label>
+          <h3>{{file.data.moduleCode}} | {{file.data.category}}</h3>
+        </ion-label>
+      </ion-item>
+      <ion-card-header>
+        <ion-card-title>{{file.data.name}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{file.data.description}}
+        <div class="tags">
+          <div class="tag" *ngFor="let tag of file.data.tags.split(',')">
+            {{tag}}
+          </div>
+        </div>
+        <div class="actions">
+          <ion-button (click)="preview(file.data.url)"> <ion-icon name="eye-outline" slot="start"></ion-icon> VIEW</ion-button>
+          <ion-button (click)="download(file.data.url, file.data.name)"> <ion-icon name="download-outline" slot="start"></ion-icon>  DOWNLOAD </ion-button>
+          <ion-button (click)="delete(file.id, file.data.moduleCode, file.data.category, file.data.name)"> <ion-icon name="trash-outline" slot="start"></ion-icon>  DELETE </ion-button>
+        </div>
+        
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- fab placed to the bottom end -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button  [routerLink]="['/insert']">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

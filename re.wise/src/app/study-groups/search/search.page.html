@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button
+      defaultHref="/tabs/tab1">
+    </ion-back-button>
+    </ion-buttons>
+    <ion-title>  Search Study Groups </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-row>
+    <ion-col>
+      <div class="noGroups" *ngIf="availableStudyGroups.length==0">
+        <h2>There are no study groups available currently. Try again in a couple of hours.</h2>
+      </div>
+    </ion-col>
+  </ion-row>
+
+  <div *ngFor="let studyGroup of availableStudyGroups">
+    <ion-card>
+      <ion-item>
+        <ion-label>
+          <h3>{{studyGroup.data().moduleCode}} | {{studyGroup.data().date.slice(0,10)}}</h3>
+        </ion-label>
+      </ion-item>
+      <ion-card-header>
+        <ion-card-title>{{studyGroup.data().title}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{studyGroup.data().description}}
+        <div>
+          
+        </div>
+        <div class="actions">
+          <ion-button (click)="join(studyGroup.id)"> <ion-icon name="create-outline" slot="start"></ion-icon>  JOIN </ion-button>
+        </div>
+        
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>

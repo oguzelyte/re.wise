@@ -1,0 +1,67 @@
+<!-- Back button with a default href -->
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button
+      icon="close"
+      defaultHref="/tabs/tab1">
+    </ion-back-button>
+    </ion-buttons>
+    <ion-title>  Upload File </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #myForm="ngForm"> 
+    <ion-item lines="full">
+      <ion-label position="floating">Title</ion-label>
+      <ion-input type="text" #title ngModel name="title" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea #description ngModel name="description" required placeholder="Enter a description"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label> Module Code </ion-label>
+      <ion-select required ngModel name="moduleCode" #moduleCode value={moduleSelected} okText="Okay" cancelText="Dismiss">
+        <ion-select-option value="{{module}}" *ngFor="let module of modules"> {{module}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label> Category </ion-label>
+      <ion-select required ngModel name="category" value={categorySelected} #category okText="Okay" cancelText="Dismiss">
+        <ion-select-option value="{{category}}" *ngFor="let category of categories"> {{category}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+<!-- 
+FIGURE OUT HOW TO SAVE FILES TO FIREBASE CLOUD STORAGE-->
+
+
+    <ion-item lines="full">
+      <ion-label position="floating">Tags (separated by a comma)</ion-label>
+      <ion-input type="text" #tags ngModel name="tags" required></ion-input>
+    </ion-item> 
+
+
+
+    <ion-item lines="full">
+      <ion-label >File Upload (img, pdf, word or excel)</ion-label>
+      <ion-input type="file" accept="image/*, .pdf, .doc, .docx, .csv" #file ngModel name="file" required (change)="selectFile($event)"></ion-input>
+    </ion-item>
+
+
+    <ion-row>
+      <ion-col> 
+      <ion-button color="secondary" type="submit" [disabled]="myForm.invalid" (click)="upload(title.value, description.value, moduleCode.value, category.value, tags.value)" expand="block">Upload File</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+
+    <div *ngIf="currentFileUpload" class="progress">
+      <ion-progress-bar [value]="progress.percentage/100"></ion-progress-bar>{{progress.percentage}}%
+    </div>
+</ion-content>

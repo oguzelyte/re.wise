@@ -1,0 +1,53 @@
+{
+  "_from": "cordova-plugin-preview-any-file",
+  "_id": "cordova-plugin-preview-any-file@0.1.6",
+  "_inBundle": false,
+  "_integrity": "sha512-nxhhVB8xw0Jz4igu3fgsQ4D/LXCyLuXet7GaOYHuTLRfgmlShzG41inC6Ljd5ISZOMDBb/D606MBp7XMeu3MkQ==",
+  "_location": "/cordova-plugin-preview-any-file",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-preview-any-file",
+    "name": "cordova-plugin-preview-any-file",
+    "escapedName": "cordova-plugin-preview-any-file",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-preview-any-file/-/cordova-plugin-preview-any-file-0.1.6.tgz",
+  "_shasum": "8e74af2d6773d6af2215d4c5b16668496a0d032a",
+  "_spec": "cordova-plugin-preview-any-file",
+  "_where": "C:\\Users\\Oli\\Desktop\\re.wise",
+  "author": {
+    "name": "Mostafa Mansour",
+    "email": "mostafa@outlook.kr"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-preview-any-file",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "Plugin to preview any file type in native mode by providing the local or external URL",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "view document",
+    "pdf",
+    "doc",
+    "docx",
+    "cordova zip",
+    "cordova document"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-preview-any-file",
+  "version": "0.1.6"
+}

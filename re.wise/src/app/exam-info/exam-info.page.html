@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Exam Information</ion-title>
+  </ion-toolbar>
+  <ion-segment
+    scrollable
+    (ionChange)="segmentChanged($event)"
+    color="secondary"
+    value="{{modules[0]}}"
+  >
+    <ion-segment-button *ngFor="let module of modules" value="{{module}}">
+      <ion-label>{{module}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content *ngIf="currentExam">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h3>{{ currentExam.title }}</h3>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="5">
+        <ion-item lines="none">
+          <ion-label>
+            Date: <br />
+            {{ currentExam.examDate }}
+          </ion-label>
+        </ion-item>
+      </ion-col>
+      <ion-col size="7">
+        <ion-item lines="none">
+          <ion-label>
+            Time: <br />
+            {{ currentExam.examTime }}
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="5">
+        <ion-button (click) = "openMapsApp(currentExam.location)">
+          <ion-label>
+            Location
+          </ion-label>
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6">
+        <ion-item lines="none" color="secondary">
+          <ion-label>
+            {{ currentExam.type.toUpperCase() }}
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <h5>Revision List</h5>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-list text-wrap>
+        <ion-item
+          color="primary"
+          *ngFor="let line of currentExam.abstract.split('-'); let i = index"
+          class="ion-text-nowrap"
+        >
+          <ion-label>
+            {{i+1}}. {{ line }}
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h5>Bring to Exam</h5>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list text-wrap>
+          <ion-item *ngFor="let line of currentExam.examBring; let i = index">
+            <ion-icon slot="start" name="checkmark-circle"> </ion-icon>
+            <ion-label>
+              {{ line }}
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

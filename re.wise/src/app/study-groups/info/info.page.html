@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"> </ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{studyGroup.moduleCode}} | Information | {{this.host}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle *ngIf="studyGroup.date"> {{studyGroup.date.slice(0,10)}} | {{studyGroup.time}} | {{studyGroup.duration}}</ion-card-subtitle>
+      <ion-card-title>{{studyGroup.title}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col>
+      Max Participants - <ion-badge color="secondary">{{studyGroup.max}}  </ion-badge>     
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          {{studyGroup.description}}
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  
+    <ion-card>
+      
+      <ion-card-header>
+        <ion-card-title>Location</ion-card-title>
+      </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col>
+          {{studyGroup.location}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-chip outline="" color="warning" class="ion-color ion-color-warning ios chip-outline ion-activatable hydrated">
+          <ion-icon name="alert-outline"></ion-icon>
+          <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">{{studyGroup.locationNotes}}</ion-label>
+        </ion-chip>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button style="margin-top: 20px;">
+            VIEW IN MAPS
+          </ion-button>
+          <br>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-list *ngFor="let member of studyGroup.members">
+          
+        </ion-list>
+      </ion-row>
+    </ion-card-content>
+    </ion-card>
+    
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Participants</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item *ngFor="let member of members" color="primary">
+          <ion-label>
+            {{ member }}
+          </ion-label>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    
+     
+
+</ion-content>

@@ -1,0 +1,28 @@
+
+
+<ion-content>
+  <ion-img src='../assets/rewise-logo.png'></ion-img>
+  <form>
+    <ion-item lines="full">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="text" #email required></ion-input>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" #password required></ion-input>
+    </ion-item>
+
+    <ion-row id="buttons">
+      <ion-col>
+        <ion-button type="submit" (click)="logIn(email, password)" expand="block">Login</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+  <ion-row>
+    <ion-col>
+      <ion-button color="secondary" type="submit" (click)="navigateToRegistration()" expand="block">Register</ion-button>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

@@ -1,0 +1,28 @@
+<ion-content>
+  <ion-img src='../assets/rewise-logo.png'></ion-img>
+  <ion-grid>
+    <ion-row class="ion-text-center">
+      <h2>Thank you for registering!
+      </h2>
+      <p>
+        Please verify your email address.
+      </p>
+    </ion-row>
+    <ion-button color="secondary" type="submit"
+      (click)="authService.SendVerificationMail()"
+      expand="block">
+      Resend Verification Email
+    </ion-button>
+    <ion-button expand="full">
+      Open mail
+    </ion-button>
+    <ion-row class="ion-text-center">
+      <p><a routerLink="/login">
+          Head to the login page
+        </a>
+
+      </p>
+
+    </ion-row>
+  </ion-grid>
+</ion-content>

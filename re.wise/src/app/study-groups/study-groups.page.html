@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Study Groups</ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button [routerLink]="['./search']">
+        <ion-icon slot="start" name="search"></ion-icon>
+        Search
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-segment
+    scrollable
+    (ionChange)="segmentChanged($event)"
+    color="secondary"
+    value="mine"
+  >
+    <ion-segment-button value="mine">
+      <ion-label>MINE</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="others">
+      <ion-label>BY OTHERS</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content>
+
+  <ion-row>
+    <ion-col>
+      <div class="noGroups" *ngIf="currentView.length==0 && currentView == myStudyGroups">
+        <h2>You haven't got any study groups, try creating some.</h2>
+      </div>
+      <div class="noGroups" *ngIf="currentView.length==0 && currentView == otherStudyGroups">
+        <h2>You haven't joined any study groups, try joining some.</h2>
+      </div>
+    </ion-col>
+  </ion-row>
+  <div *ngFor="let studyGroup of currentView">
+    <ion-card (click)="send(studyGroup)">
+      <ion-item>
+        <ion-label>
+          <h3>{{studyGroup.data().moduleCode}} | {{studyGroup.data().date.slice(0,10)}} | In {{getDays(studyGroup.data().date)}} days</h3>
+        </ion-label>
+      </ion-item>
+      <ion-card-header>
+        <ion-card-title>{{studyGroup.data().title}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{studyGroup.data().description}}
+        <div>
+          
+        </div>
+        <div class="actions">
+          <ion-button *ngIf="currentView != otherStudyGroups" (click)="edit(studyGroup.id)"> <ion-icon name="create-outline" slot="start"></ion-icon>  EDIT </ion-button>
+          <ion-button (click)="delete(studyGroup.id)"> <ion-icon name="trash-outline" slot="start"></ion-icon>  DELETE </ion-button>
+        </div>
+        
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+    <!-- fab placed to the bottom end -->
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button  [routerLink]="['add']">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+</ion-content>

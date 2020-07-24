@@ -1,0 +1,25 @@
+ion-img {
+    max-width: 60%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+p{
+    margin: auto;
+    padding: 30px;
+}
+
+// CREATE AN UPLOAD PAGE WITH WHICH YOU WILL
+// UPLOAD FILES TO FIRESTORE, CAN BE ONLY PDF OR WORD FILES
+// AND IN THE UPLOAD SECTION YOU WILL SEE ALL THE INFO ABOUT THE UPLOAD
+// FLOATING ACTION BUTTON WILL ALLOW YOU TO CREATE AN UPLOAD
+// CREATE A MODULES STORAGE
+// ON USER JSON FILE CREATE ENTRY modules: cs234, crr5, cdwer - WITH LIST OF MODULES USER BELONGS TO
